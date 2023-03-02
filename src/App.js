@@ -2,7 +2,18 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [advice, setAdvice] = useState();
+  const [Jokes, setJoke] = useState([]);
+
+  const fetchJokes = async () => {
+   const res = await fetch('https://icanhazdadjoke.com/',{header:{Accept:"application/json"}})
+   const data = await res.json();
+console.log(data)
+   setJoke(data);
+  }
+  useEffect(() => {
+fetchJokes()
+  }, [])
+
   return (
     <div
       className='Container'
@@ -23,6 +34,7 @@ function App() {
             fontSize: '13px',
             paddingTop: '35px',
             marginLeft: '18px',
+            letterSpacing:'4.08px'
           }}
         >
           Joke #{}
