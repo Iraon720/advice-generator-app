@@ -1,23 +1,48 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+  const [advice, setAdvice] = useState();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div
+      className='Container'
+      style={{
+        width: '540px',
+        height: '330px',
+        marginTop: '210px',
+        marginLeft: '450px',
+        borderRadius: '15px',
+        backgroundColor: '#313A48',
+        textAlign: 'center',
+      }}
+    >
+      <section className='inner'>
+        <h1
+          style={{
+            color: '#53FFAA',
+            fontSize: '13px',
+            paddingTop: '35px',
+            marginLeft: '18px',
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          Joke #{}
+        </h1>
+        <p
+          style={{
+            color: '#CEE3E9',
+            fontSize: '25px',
+            marginTop: '35px',
+            marginLeft: '18px',
+            display: 'flex',
+            alignContent: 'center',
+          }}
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
+          reprehenderit, optio assumenda recusandae temporibus deleniti? At est,
+          excepturi qui voluptate, aperiam exercitationem similique nobis veniam
+          atque maiores, libero ipsum? Recusandae.
+        </p>
+      </section>
     </div>
   );
 }
