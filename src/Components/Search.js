@@ -1,9 +1,9 @@
 import React from "react";
-import { useState } from "react";
-import useStorage from './useStorage'
+import { useState, useEffect } from "react";
+// import useStorage from './useStorage'
 
 function Search(props){
-  const [input, setInput] = useStorage('input', '')
+  const [input, setInput] = useState('input', '')
 console.log(input)
 return (
   <div
@@ -26,7 +26,7 @@ return (
           border: '.5px',
         }}
         value={input}
-        onChange={e => setInput(e.target.value)}
+        onChange={(e) => setInput(e.target.value)}
         type='text'
         className='searchBar'
         placeholder='Search Jokes!'
@@ -41,6 +41,11 @@ return (
           marginLeft: '10px',
           border: '.5px',
         }}
+        onClick={() => {
+          props.changeNumber();
+          props.forBtn();
+          props.link(`https://icanhazdadjoke.com/search?term=${input}`);
+        }}
       >
         Search
       </button>
@@ -54,7 +59,6 @@ return (
           color: '#202733',
           border: '.5px',
         }}
-        onClick={props.changeNumber}
       >
         Work
       </button>
@@ -68,7 +72,11 @@ return (
           marginRight: '10px',
           marginLeft: '10px',
         }}
-        onClick={props.changeNumber}
+        onClick={() => {
+          props.changeNumber();
+          props.forBtn();
+          props.link(`https://icanhazdadjoke.com/search?term=${input}`);
+        }}
       >
         Car
       </button>
@@ -91,7 +99,8 @@ return (
 
 
 
-
+ 
+          
 
 
 export default Search; 

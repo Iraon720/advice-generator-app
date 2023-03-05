@@ -7,6 +7,11 @@ import './App.css';
 function App() {
   const [Jokes, setJokes] = useState([]);
   const [randomNumber, setRandomNumber] = useState(null);
+  const [url, setUrl] = useState('https://icanhazdadjoke.com/');
+
+  const handleUrlChange = (newUrl) => {
+    setUrl(newUrl);
+}
 
    //   const fetchJokes = async () => {
   //    const res = await fetch('https://icanhazdadjoke.com/slack',{header:{Accept:"application/json"}})
@@ -16,9 +21,12 @@ function App() {
   //   }
 
   async function fetchJokes() {
-    const response = await fetch('https://icanhazdadjoke.com/', {
-      headers: { Accept: 'application/json' },
-    });
+    const response = await fetch(
+      url,
+      {
+        headers: { Accept: 'application/json' },
+      }
+    );
     const laugh = await response.json();
     setJokes(laugh.joke);
     console.log(laugh.joke)
@@ -30,8 +38,22 @@ function App() {
     setRandomNumber(newRandomNumber);
     }
 
+
+  async function fetchJokeBtns() {
+    const response = await fetch(url, {
+      headers: { Accept: 'application/json' },
+    });
+    const laugh = await response.json();
+    setJokes(laugh.results[0].joke);
+    console.log(laugh.results[0].joke);
+  }
+
+
+
     useEffect(() => {
   fetchJokes()
+  
+  
   generateRandomNumber()
     }, [])
 
@@ -84,7 +106,7 @@ function App() {
             alignItems: 'center',
           }}
         >
-          <img src={Group2} style={{ marginBottom: '10px' }} />
+          <img src={Group2} alt='' style={{ marginBottom: '10px' }} />
           <button
             style={{
               backgroundColor: '#53FFAA',
@@ -101,13 +123,16 @@ function App() {
               generateRandomNumber();
             }}
           >
-            <img src={Dice} />
+            <img src={Dice} alt='' />
           </button>
         </picture>
       </section>
       <div>
         <Search
-        changeNumber={generateRandomNumber} />
+          forBtn={fetchJokeBtns}
+          link={handleUrlChange}
+          changeNumber={generateRandomNumber}
+        />
       </div>
     </div>
   );
