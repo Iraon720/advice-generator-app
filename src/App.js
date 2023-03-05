@@ -44,14 +44,16 @@ function App() {
       headers: { Accept: 'application/json' },
     });
     const laugh = await response.json();
-    setJokes(laugh.results[0].joke);
-    console.log(laugh.results[0].joke);
+      const randomIndex = Math.floor(Math.random() * laugh.results.length);
+      setJokes(laugh.results[randomIndex].joke);
+      console.log(laugh.results[randomIndex].joke);
   }
 
 
 
     useEffect(() => {
   fetchJokes()
+ 
   
   
   generateRandomNumber()
@@ -95,7 +97,7 @@ function App() {
               alignContent: 'center',
             }}
           >
-            {Jokes}
+            {Jokes} 
           </p>
         </div>
         <picture
@@ -120,6 +122,7 @@ function App() {
             }}
             onClick={() => {
               fetchJokes();
+              fetchJokeBtns();
               generateRandomNumber();
             }}
           >

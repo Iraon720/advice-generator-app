@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // import useStorage from './useStorage'
 
 function Search(props){
-  const [input, setInput] = useState('input', '')
+  const [input, setInput] = useState('')
 console.log(input)
 return (
   <div
