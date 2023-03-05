@@ -59,6 +59,11 @@ return (
           color: '#202733',
           border: '.5px',
         }}
+        onClick={() => {
+          props.changeNumber();
+          props.forBtn();
+          props.link('https://icanhazdadjoke.com/search?term=work');
+        }}
       >
         Work
       </button>
@@ -75,7 +80,7 @@ return (
         onClick={() => {
           props.changeNumber();
           props.forBtn();
-          props.link(`https://icanhazdadjoke.com/search?term=${input}`);
+          props.link('https://icanhazdadjoke.com/search?term=car');
         }}
       >
         Car
@@ -88,7 +93,11 @@ return (
           color: '#202733',
           border: '.5px',
         }}
-        onClick={props.changeNumber}
+        onClick={() => {
+          props.changeNumber();
+          props.forBtn();
+          props.link('https://icanhazdadjoke.com/search?term=red');
+        }}
       >
         Red
       </button>
