@@ -1,7 +1,10 @@
 import React from "react";
+import { useState } from "react";
+import useStorage from './useStorage'
 
 function Search(props){
-
+  const [input, setInput] = useStorage('input', '')
+console.log(input)
 return (
   <div
     className='Search'
@@ -22,6 +25,8 @@ return (
           marginLeft: '10px',
           border: '.5px',
         }}
+        value={input}
+        onChange={e => setInput(e.target.value)}
         type='text'
         className='searchBar'
         placeholder='Search Jokes!'
