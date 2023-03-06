@@ -45,6 +45,7 @@ function App() {
     });
     const laugh = await response.json();
       const randomIndex = Math.floor(Math.random() * laugh.results.length);
+      debugger
       setJokes(laugh.results[randomIndex].joke);
       console.log(laugh.results[randomIndex].joke);
   }
@@ -86,7 +87,7 @@ function App() {
         >
           Joke #{randomNumber}
         </h1>
-        <div style={{ height: '180px', width: '540px' }}>
+        <div style={{ height: '180px', width: '540px', alignContent:'center'}}>
           <p
             style={{
               color: '#CEE3E9',
@@ -109,7 +110,7 @@ function App() {
           }}
         >
           <img src={Group2} alt='' style={{ marginBottom: '10px' }} />
-          <button
+          <button className='random'
             style={{
               backgroundColor: '#53FFAA',
               borderBlockColor: '#53FFAA',
@@ -119,6 +120,8 @@ function App() {
               borderRadius: '75%',
               border: '.5px',
               position: 'relative',
+              cursor: 'pointer',
+              
             }}
             onClick={() => {
               fetchJokes();

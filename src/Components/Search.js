@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-// import useStorage from './useStorage'
+import useStorage from './useStorage'
 
 function Search(props){
   const [input, setInput] = useState('')
@@ -32,7 +32,8 @@ return (
         placeholder='Search Jokes!'
       ></input>
       <button
-        className='searchbtn'
+      
+        className='searchBtn'
         style={{
           borderRadius: '10px',
           width: '120px',
@@ -46,6 +47,7 @@ return (
           props.forBtn();
           props.link(`https://icanhazdadjoke.com/search?term=${input}`);
         }}
+        disabled={!input.trim()}
       >
         Search
       </button>

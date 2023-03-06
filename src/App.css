@@ -2,8 +2,36 @@ input{
  background-color:#4F5D74;
  color:#53FFAA;
 }
+.random:hover{
+  
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px #53FFAA;
+}
+button:hover{
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px #53FFAA;
 
+}
+button{
+  cursor: pointer;
+}
+.searchBtn:disabled{
+  opacity: 55%;
+  cursor: not-allowed;
+  
+  
+}
+.searchBtn:disabled:hover{
+  box-shadow: none;
+}
+@media screen and (max-width:540px) {
+  .Container{
+    width: 343px;
+    height:347px;
+    margin-right: -300px;
 
+  }
+}
 
 
 
