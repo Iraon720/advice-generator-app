@@ -11,9 +11,9 @@ function App() {
 
   const handleUrlChange = (newUrl) => {
     setUrl(newUrl);
-}
+  };
 
-   //   const fetchJokes = async () => {
+  //   const fetchJokes = async () => {
   //    const res = await fetch('https://icanhazdadjoke.com/slack',{header:{Accept:"application/json"}})
   //    const data = await res.json();
   //    setJoke(data.attachments[0].fallback)
@@ -21,46 +21,36 @@ function App() {
   //   }
 
   async function fetchJokes() {
-    const response = await fetch(
-      url,
-      {
-        headers: { Accept: 'application/json' },
-      }
-    );
+    const response = await fetch(url, {
+      headers: { Accept: 'application/json' },
+    });
     const laugh = await response.json();
     setJokes(laugh.joke);
-    console.log(laugh.joke)
+    console.log(laugh.joke);
   }
 
   //Function that handles creating random numbers, 744 is the number of jokes the database has.
-    const generateRandomNumber = () => {
+  const generateRandomNumber = () => {
     const newRandomNumber = Math.floor(Math.random() * 744);
     setRandomNumber(newRandomNumber);
-    }
-
+  };
 
   async function fetchJokeBtns() {
     const response = await fetch(url, {
       headers: { Accept: 'application/json' },
     });
     const laugh = await response.json();
-      const randomIndex = Math.floor(Math.random() * laugh.results.length);
-      debugger
-      setJokes(laugh.results[randomIndex].joke);
-      console.log(laugh.results[randomIndex].joke);
+    const randomIndex = Math.floor(Math.random() * laugh.results.length);
+    debugger;
+    setJokes(laugh.results[randomIndex].joke);
+    console.log(laugh.results[randomIndex].joke);
   }
 
+  useEffect(() => {
+    fetchJokes();
 
-
-    useEffect(() => {
-  fetchJokes()
- 
-  
-  
-  generateRandomNumber()
-    }, [])
-
-   
+    generateRandomNumber();
+  }, []);
 
   return (
     <div
@@ -87,7 +77,9 @@ function App() {
         >
           Joke #{randomNumber}
         </h1>
-        <div style={{ height: '180px', width: '540px', alignContent:'center'}}>
+        <div
+          style={{ height: '180px', width: '540px', alignContent: 'center' }}
+        >
           <p
             style={{
               color: '#CEE3E9',
@@ -98,7 +90,7 @@ function App() {
               alignContent: 'center',
             }}
           >
-            {Jokes} 
+            {Jokes}
           </p>
         </div>
         <picture
@@ -110,7 +102,8 @@ function App() {
           }}
         >
           <img src={Group2} alt='' style={{ marginBottom: '10px' }} />
-          <button className='random'
+          <button
+            className='random'
             style={{
               backgroundColor: '#53FFAA',
               borderBlockColor: '#53FFAA',
@@ -121,7 +114,6 @@ function App() {
               border: '.5px',
               position: 'relative',
               cursor: 'pointer',
-              
             }}
             onClick={() => {
               fetchJokes();
