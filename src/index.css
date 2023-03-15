@@ -5,6 +5,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #202733;
+  display: flex;
+  align-items: center;
+
 }
 ::-webkit-input-placeholder{
   color: #CEE3E9;
